@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hamka Hj Suleiman — Senior O&G Telecom Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0e0d0b;
+    --paper: #f5f0e8;
+    --cream: #ede8dc;
+    --gold: #b8942a;
+    --gold-light: #d4ae4e;
+    --rust: #8b3a1e;
+    --steel: #2c3e50;
+    --muted: #6b6355;
+    --line: rgba(14,13,11,0.12);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 1000;
+    opacity: 0.5;
+  }
+
+  /* ─── TOPBAR ─── */
+  .topbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 60px;
+    background: rgba(245,240,232,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .topbar-logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .topbar-nav {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .topbar-nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .topbar-nav a:hover { color: var(--gold); }
+
+  .topbar-cta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 10px 22px;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .topbar-cta:hover { background: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    padding: 140px 60px 80px;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 0; top: 0; bottom: 0;
+    width: 420px;
+    background: var(--cream);
+    z-index: 0;
+  }
+
+  .hero-left { position: relative; z-index: 1; }
+  .hero-right { position: relative; z-index: 1; }
+
+  .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .hero-eyebrow-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-eyebrow span {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 6vw, 84px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 36px;
+    border-left: 2px solid var(--gold);
+    padding-left: 14px;
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--steel);
+    max-width: 520px;
+    margin-bottom: 48px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 14px 32px;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--gold); transform: translateY(-1px); }
+
+  .btn-secondary {
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    padding: 14px 32px;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-secondary:hover { background: var(--ink); color: var(--paper); }
+
+  /* Stats panel */
+  .hero-stats {
+    background: var(--ink);
+    padding: 48px 40px;
+    color: var(--paper);
+  }
+
+  .stat-item {
+    padding: 28px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stat-item:last-child { border-bottom: none; }
+
+  .stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+  }
+
+  /* ─── MARQUEE STRIP ─── */
+  .marquee-strip {
+    background: var(--gold);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .marquee-inner {
+    display: inline-block;
+    animation: marquee 30s linear infinite;
+  }
+
+  .marquee-inner span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 48px;
+  }
+
+  .marquee-inner span::before {
+    content: '◆ ';
+    margin-right: 8px;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ─── SECTION COMMONS ─── */
+  section {
+    padding: 100px 60px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 52px);
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .section-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+    margin-left: 20px;
+  }
+
+  /* ─── SERVICES ─── */
+  .services { background: var(--cream); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .service-card {
+    background: var(--paper);
+    padding: 48px 40px;
+    position: relative;
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+
+  .service-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    font-size: 28px;
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 400;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .service-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .service-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 32px;
+  }
+
+  .service-deliverables {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+
+  .service-deliverables li {
+    font-size: 13px;
+    color: var(--steel);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .service-deliverables li::before {
+    content: '→';
+    color: var(--gold);
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .service-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--ink);
+  }
+
+  .service-price span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-left: 4px;
+  }
+
+  /* ─── EXPERTISE / STANDARDS ─── */
+  .expertise { background: var(--ink); color: var(--paper); }
+
+  .expertise .section-title { color: var(--paper); }
+  .expertise .section-rule { background: rgba(255,255,255,0.12); }
+
+  .expertise-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+  }
+
+  .expertise-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(245,240,232,0.85);
+    margin-bottom: 40px;
+  }
+
+  .standards-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .standard-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    padding: 6px 14px;
+    transition: all 0.2s;
+  }
+
+  .standard-tag:hover { background: var(--gold); color: var(--ink); }
+
+  .systems-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  .system-item {
+    background: rgba(255,255,255,0.04);
+    padding: 20px 24px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .system-item:hover {
+    border-left-color: var(--gold);
+    background: rgba(184,148,42,0.08);
+  }
+
+  .system-item-name {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--paper);
+    margin-bottom: 4px;
+  }
+
+  .system-item-desc {
+    font-size: 12px;
+    color: rgba(245,240,232,0.45);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── TRACK RECORD (Proof section) ─── */
+  .proof { background: var(--paper); }
+
+  .proof-intro {
+    max-width: 640px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--steel);
+    margin-bottom: 60px;
+    font-style: italic;
+  }
+
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .project-row {
+    display: grid;
+    grid-template-columns: 200px 1fr auto;
+    align-items: start;
+    gap: 48px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s;
+  }
+
+  .project-row:hover {
+    background: var(--cream);
+    margin: 0 -60px;
+    padding: 36px 60px;
+  }
+
+  .project-client {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding-top: 4px;
+  }
+
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+
+  .project-detail {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .project-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    padding-top: 6px;
+  }
+
+  /* ─── CREDENTIALS ─── */
+  .credentials { background: var(--cream); }
+
+  .credentials-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+
+  .credential-card {
+    background: var(--paper);
+    padding: 36px 28px;
+  }
+
+  .credential-icon {
+    font-size: 22px;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .credential-name {
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .credential-body {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ─── TESTIMONIAL PLACEHOLDER ─── */
+  .social-proof { background: var(--paper); padding: 100px 60px; }
+
+  .proof-callout {
+    background: var(--ink);
+    padding: 64px 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .callout-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--paper);
+    line-height: 1.5;
+  }
+
+  .callout-quote::before {
+    content: '"';
+    font-size: 80px;
+    color: var(--gold);
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 16px;
+  }
+
+  .callout-attribution {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    margin-top: 20px;
+    text-transform: uppercase;
+  }
+
+  .callout-right { }
+
+  .callout-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--paper);
+    margin-bottom: 20px;
+  }
+
+  .callout-list {
+    list-style: none;
+  }
+
+  .callout-list li {
+    font-size: 14px;
+    color: rgba(245,240,232,0.65);
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .callout-list li::before {
+    content: '✓';
+    color: var(--gold);
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* ─── PROCESS ─── */
+  .process { background: var(--cream); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    counter-reset: step;
+  }
+
+  .step {
+    padding: 48px 36px;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+
+  .step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    font-weight: 300;
+    color: var(--line);
+    line-height: 1;
+    margin-bottom: 16px;
+    position: absolute;
+    top: 28px;
+    right: 28px;
+  }
+
+  .step-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.8;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ─── CONTACT ─── */
+  .contact {
+    background: var(--ink);
+    color: var(--paper);
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .contact-inner {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    align-items: center;
+  }
+
+  .contact-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--paper);
+    margin-bottom: 24px;
+  }
+
+  .contact-heading em { color: var(--gold-light); font-style: italic; }
+
+  .contact-sub {
+    font-size: 15px;
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 40px;
+    max-width: 420px;
+    line-height: 1.8;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    padding: 18px 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.2s;
+    color: var(--paper);
+  }
+
+  .contact-link:hover {
+    border-color: var(--gold);
+    background: rgba(184,148,42,0.08);
+  }
+
+  .contact-link-icon {
+    font-size: 18px;
+    width: 36px;
+    flex-shrink: 0;
+  }
+
+  .contact-link-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .contact-link-value {
+    font-size: 14px;
+    color: rgba(245,240,232,0.8);
+  }
+
+  .contact-right {
+    background: rgba(255,255,255,0.03);
+    padding: 52px 48px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    color: var(--paper);
+    margin-bottom: 32px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--paper);
+    padding: 14px 16px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .form-select { cursor: pointer; }
+  .form-select option { background: var(--ink); }
+
+  .form-textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--ink);
+    border: none;
+    padding: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #080807;
+    padding: 32px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-left {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    color: rgba(245,240,232,0.25);
+    text-transform: uppercase;
+  }
+
+  .footer-right {
+    display: flex;
+    gap: 28px;
+  }
+
+  .footer-right a {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.3);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-right a:hover { color: var(--gold); }
+
+  /* ─── ANIMATIONS ─── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 1024px) {
+    .topbar { padding: 18px 32px; }
+    .topbar-nav { display: none; }
+    section { padding: 72px 32px; }
+    .hero { grid-template-columns: 1fr; padding: 120px 32px 64px; }
+    .hero::after { display: none; }
+    .hero-right { background: var(--cream); padding: 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .expertise-layout { grid-template-columns: 1fr; gap: 48px; }
+    .credentials-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+    .proof-callout { grid-template-columns: 1fr; gap: 40px; padding: 48px 36px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .project-row { grid-template-columns: 1fr; gap: 8px; }
+    .project-year { order: -1; }
+    .project-row:hover { margin: 0; padding: 36px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── TOPBAR ─── -->
+<header class="topbar">
+  <div class="topbar-logo">Hamka Hj Suleiman · Portfolio</div>
+  <nav>
+    <ul class="topbar-nav">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#track-record">Track Record</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+  </nav>
+  <a href="#contact" class="topbar-cta">Hire Me</a>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="home">
+  <div class="hero-left fade-in">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>Available for Projects</span>
+    </div>
+    <h1 class="hero-name">Hamka<br><em>Hj Suleiman</em></h1>
+    <p class="hero-title">Senior Telecom Engineer · Oil & Gas · 30+ Years</p>
+    <p class="hero-desc">
+      I write the telecom engineering documentation that gets your project through design reviews, client approvals, and HAZOP sessions — correctly, the first time. Specialising in FEED & Detail Engineering, compliance against SHELL DEPs, PETRONAS, ADNOC, and IEC standards.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">View Services</a>
+      <a href="#contact" class="btn-secondary">Request a Consultation</a>
+    </div>
+  </div>
+
+  <div class="hero-right fade-in" style="transition-delay:0.15s">
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Years in O&G Telecom Engineering</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1,275</div>
+        <div class="stat-label">Wellheads Commissioned (Dukhan Fields SCADA)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">USD 20M+</div>
+        <div class="stat-label">FEED Scope Led (Qatar Petroleum PWI)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Major Operators: PETRONAS · QP · MLNG · ADNOC</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ─── -->
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span>SHELL DEP Compliance</span>
+    <span>PETRONAS Standards</span>
+    <span>ADNOC Documentation</span>
+    <span>IEC 62443 Cybersecurity</span>
+    <span>FEED Engineering</span>
+    <span>SCADA Telemetry</span>
+    <span>PA/GA Systems</span>
+    <span>Fiber Optic Networks</span>
+    <span>TETRA Radio</span>
+    <span>CCTV Systems</span>
+    <span>IEEE Compliant</span>
+    <span>ISO 9001:2015</span>
+    <span>SHELL DEP Compliance</span>
+    <span>PETRONAS Standards</span>
+    <span>ADNOC Documentation</span>
+    <span>IEC 62443 Cybersecurity</span>
+    <span>FEED Engineering</span>
+    <span>SCADA Telemetry</span>
+    <span>PA/GA Systems</span>
+    <span>Fiber Optic Networks</span>
+    <span>TETRA Radio</span>
+    <span>CCTV Systems</span>
+    <span>IEEE Compliant</span>
+    <span>ISO 9001:2015</span>
+  </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
+<section class="services" id="services">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Services & Pricing</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="services-grid">
+    <!-- Package 1 -->
+    <div class="service-card fade-in">
+      <span class="service-icon">📄</span>
+      <h3 class="service-name">The Spec Writer</h3>
+      <p class="service-subtitle">Package 01 · Entry Level</p>
+      <p class="service-desc">A complete, standards-compliant Telecom System Specification or Design Basis Document for a single system — written from scratch or reviewed against your operator's requirements.</p>
+      <ul class="service-deliverables">
+        <li>15–30 page Word deliverable</li>
+        <li>CCTV, PA/GA, SCADA, LAN/WAN, Access Control, or Structured Cabling</li>
+        <li>Aligned to SHELL DEP, PETRONAS, or ADNOC</li>
+        <li>IEC / IEEE standards references included</li>
+        <li>1 round of revisions</li>
+      </ul>
+      <div class="service-price">USD 300 <span>/ document · 5–7 days</span></div>
+    </div>
+
+    <!-- Package 2 -->
+    <div class="service-card fade-in" style="transition-delay:0.1s">
+      <span class="service-icon">🔍</span>
+      <h3 class="service-name">The Compliance Auditor</h3>
+      <p class="service-subtitle">Package 02 · Mid-Tier</p>
+      <p class="service-desc">Submit your existing design documentation and I return a structured gap analysis report — identifying non-conformances, missing deliverables, and corrective actions before your design review.</p>
+      <ul class="service-deliverables">
+        <li>Formal Gap Analysis Report (Word + summary table)</li>
+        <li>Non-conformance register against specified standard</li>
+        <li>Prioritised corrective action list</li>
+        <li>Suitable for client design reviews & HAZOP prep</li>
+        <li>1 revision + 30-min video call debrief</li>
+      </ul>
+      <div class="service-price">USD 650 <span>/ review · 5–10 days</span></div>
+    </div>
+
+    <!-- Package 3 -->
+    <div class="service-card fade-in" style="transition-delay:0.2s">
+      <span class="service-icon">📦</span>
+      <h3 class="service-name">The Full Package</h3>
+      <p class="service-subtitle">Package 03 · Premium</p>
+      <p class="service-desc">A complete turnkey telecom documentation set for a small or brownfield O&G project — covering design basis through to cable schedules and MTO. You get a senior telecom lead on paper, without the overhead.</p>
+      <ul class="service-deliverables">
+        <li>Telecom Design Basis Document</li>
+        <li>System Specification (one system)</li>
+        <li>Cable Schedule & MTO skeleton (Excel)</li>
+        <li>Block Diagram review & mark-up</li>
+        <li>2 revisions + 60-min walkthrough call</li>
+      </ul>
+      <div class="service-price">USD 2,000 <span>/ project · 2–3 weeks</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EXPERTISE ─── -->
+<section class="expertise" id="expertise">
+  <div class="section-header fade-in">
+    <span class="section-num" style="color:var(--gold)">02</span>
+    <h2 class="section-title">Standards & Systems</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="expertise-layout">
+    <div>
+      <p class="expertise-intro fade-in">
+        Three decades of writing documents that survive client reviews, HAZOP sessions, and commissioning audits across the Gulf and Southeast Asia.
+      </p>
+      <div class="standards-list fade-in">
+        <span class="standard-tag">SHELL DEP</span>
+        <span class="standard-tag">PETRONAS PTS</span>
+        <span class="standard-tag">ADNOC Standards</span>
+        <span class="standard-tag">IEC 62443</span>
+        <span class="standard-tag">IEC 60079</span>
+        <span class="standard-tag">IEEE 802.3</span>
+        <span class="standard-tag">ITU-T</span>
+        <span class="standard-tag">NFPA 72</span>
+        <span class="standard-tag">ANSI/TIA-568</span>
+        <span class="standard-tag">ISO 9001:2015</span>
+        <span class="standard-tag">IP65/IP66</span>
+        <span class="standard-tag">ATEX / IECEx</span>
+      </div>
+    </div>
+
+    <div class="systems-grid fade-in">
+      <div class="system-item">
+        <div class="system-item-name">PA/GA Systems</div>
+        <div class="system-item-desc">Public Address & General Alarm</div>
+      </div>
+      <div class="system-item">
+        <div class="system-item-name">SCADA Telemetry</div>
+        <div class="system-item-desc">Supervisory Control & Data Acquisition</div>
+      </div>
+      <div class="system-item">
+        <div class="system-item-name">CCTV Systems</div>
+        <div class="system-item-desc">Onshore & offshore surveillance</div>
+      </div>
+      <div class="system-item">
+        <div class="system-item-name">Access Control</div>
+        <div class="system-item-desc">Integrated security systems</div>
+      </div>
+      <div class="system-item">
+        <div class="system-item-name">Fiber Optic Networks</div>
+        <div class="system-item-desc">SDH / OTN / DWDM / FOC links</div>
+      </div>
+      <div class="system-item">
+        <div class="system-item-name">TETRA Radio</div>
+        <div class="system-item-desc">Mission-critical voice comms</div>
+      </div>
+      <div class="system-item">
+        <div class="system-item-name">LAN/WAN Networks</div>
+        <div class="system-item-desc">Gigabit Ethernet, structured cabling</div>
+      </div>
+      <div class="system-item">
+        <div class="system-item-name">Cybersecurity</div>
+        <div class="system-item-desc">IEC 62443 industrial OT/IT security</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRACK RECORD ─── -->
+<section class="proof" id="track-record">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Selected Projects</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <p class="proof-intro fade-in">
+    These are real projects I have designed, commissioned, or led as telecom discipline engineer. Each one is the kind of scope I now help EPC contractors document correctly.
+  </p>
+
+  <div class="projects-list">
+    <div class="project-row fade-in">
+      <div class="project-client">Qatar Petroleum</div>
+      <div>
+        <div class="project-name">PWI Automation Upgrade — FEED Lead</div>
+        <div class="project-detail">Led the Front End Engineering Design for a USD 20M+ production wellhead instrumentation upgrade. Delivered full telecom scope including PROFINET networks, SCADA integration, centralized weather monitoring, and IEC 62443 cybersecurity alignment.</div>
+      </div>
+      <div class="project-year">2012–2020</div>
+    </div>
+
+    <div class="project-row fade-in">
+      <div class="project-client">PETRONAS Carigali</div>
+      <div>
+        <div class="project-name">Dukhan Fields PAGA & CCTV Commissioning</div>
+        <div class="project-detail">Designed and commissioned PA/GA and CCTV systems across 81 stations with fiber optic connectivity to all plants. Also designed weather stations and FOC links between all manifold stations.</div>
+      </div>
+      <div class="project-year">2004–2007</div>
+    </div>
+
+    <div class="project-row fade-in">
+      <div class="project-client">PETRONAS Carigali</div>
+      <div>
+        <div class="project-name">Dukhan Fields Wellhead SCADA</div>
+        <div class="project-detail">Designed and commissioned a full Wellhead SCADA system with solar power for 1,275 wells — one of the largest remote telemetry installations in Dukhan Field history.</div>
+      </div>
+      <div class="project-year">1994–2004</div>
+    </div>
+
+    <div class="project-row fade-in">
+      <div class="project-client">PETRONAS / MLNG / KPOC</div>
+      <div>
+        <div class="project-name">Multi-site Telecom Integration & Maintenance</div>
+        <div class="project-detail">End-to-end telecom design and integration for PETRONAS Methanol and PEGAGA Mubadala projects. Maintained CCTV, PA/GA, Access Control, and ICT systems across multiple PETRONAS and KPOC sites in Sarawak and Sabah.</div>
+      </div>
+      <div class="project-year">2020–2023</div>
+    </div>
+
+    <div class="project-row fade-in">
+      <div class="project-client">IPerintis / PETRONAS</div>
+      <div>
+        <div class="project-name">Offshore FSO & SCADA Telemetry Modernization</div>
+        <div class="project-detail">Led modernization projects deploying Free Space Optics (FSO) and SCADA telemetry across offshore platforms, enhancing real-time data reliability. Developed specifications, equipment lists, and SLA-backed vendor management frameworks.</div>
+      </div>
+      <div class="project-year">2004–2007</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST CALLOUT ─── -->
+<section class="social-proof">
+  <div class="proof-callout fade-in">
+    <div>
+      <div class="callout-quote">
+        The documentation you submit is the first thing your client judges. It tells them whether you know the standard — or whether you've just heard of it.
+      </div>
+      <div class="callout-attribution">— Hamka Hj Suleiman · 30 Years in O&G Telecom</div>
+    </div>
+    <div class="callout-right">
+      <h3 class="callout-title">Why clients hire me instead of a junior engineer</h3>
+      <ul class="callout-list">
+        <li>I've written these exact documents for Qatar Petroleum and PETRONAS — not theoretically</li>
+        <li>I know what SHELL DEP reviewers look for before they flag a non-conformance</li>
+        <li>I've been on both sides of the design review table</li>
+        <li>My documents are written to survive HAZOP — not just pass a first read</li>
+        <li>No re-learning curve — I've been fluent in these standards for 20+ years</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CREDENTIALS ─── -->
+<section class="credentials" id="credentials">
+  <div class="section-header fade-in">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Credentials</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="credentials-grid">
+    <div class="credential-card fade-in">
+      <span class="credential-icon">🎓</span>
+      <div class="credential-name">BSc Chemical Engineering</div>
+      <div class="credential-body">University of Tulsa, Oklahoma, USA — 1993. Foundation in process engineering that informs every telecom-SCADA interface decision.</div>
+    </div>
+    <div class="credential-card fade-in" style="transition-delay:0.08s">
+      <span class="credential-icon">📡</span>
+      <div class="credential-name">Harris Truepoint & 4RF Radio Specialist</div>
+      <div class="credential-body">Certified specialist in professional-grade microwave and point-to-point radio systems used extensively across upstream O&G assets.</div>
+    </div>
+    <div class="credential-card fade-in" style="transition-delay:0.16s">
+      <span class="credential-icon">📐</span>
+      <div class="credential-name">Pathloss Software Certified</div>
+      <div class="credential-body">Certified in the industry-standard propagation and path analysis software used for microwave link design and interference analysis.</div>
+    </div>
+    <div class="credential-card fade-in" style="transition-delay:0.24s">
+      <span class="credential-icon">✅</span>
+      <div class="credential-name">ISO 9001:2015 Internal Auditor</div>
+      <div class="credential-body">Certified internal auditor — meaning my documentation is written to audit-ready standards. I know what an auditor looks for because I am one.</div>
+    </div>
+    <div class="credential-card fade-in" style="transition-delay:0.32s">
+      <span class="credential-icon">🔐</span>
+      <div class="credential-name">IEC 62443 Cybersecurity (Aligned)</div>
+      <div class="credential-body">Industrial OT/IT cybersecurity awareness for O&G control systems. Led the cybersecurity study for Dukhan Fields EPIC scope.</div>
+    </div>
+    <div class="credential-card fade-in" style="transition-delay:0.40s">
+      <span class="credential-icon">🌊</span>
+      <div class="credential-name">Offshore Sea Survival & HUET</div>
+      <div class="credential-body">Certified for offshore deployment — Helicopter Underwater Escape Training. Ensures I understand the operational constraints of offshore telecom environments first-hand.</div>
+    </div>
+    <div class="credential-card fade-in" style="transition-delay:0.48s">
+      <span class="credential-icon">⚡</span>
+      <div class="credential-name">Agile Project Delivery</div>
+      <div class="credential-body">Trained in Agile delivery principles — applied to phased documentation projects where scopes evolve through client feedback and FEED iterations.</div>
+    </div>
+    <div class="credential-card fade-in" style="transition-delay:0.56s">
+      <span class="credential-icon">🌍</span>
+      <div class="credential-name">Multilingual</div>
+      <div class="credential-body">English (fluent) · Bahasa Malaysia (native) · Spanish (conversational) · Arabic (conversational). Critical for Middle East and SEA project interfaces.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCESS ─── -->
+<section class="process" id="process">
+  <div class="section-header fade-in">
+    <span class="section-num">05</span>
+    <h2 class="section-title">How It Works</h2>
+    <div class="section-rule"></div>
+  </div>
+
+  <div class="process-steps">
+    <div class="step fade-in">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Brief Call</h3>
+      <p class="step-desc">We spend 20–30 minutes on a video or voice call. You describe the project scope, applicable operator standard, and what documentation you need. I confirm what I need from you and provide a fixed-price quote.</p>
+    </div>
+    <div class="step fade-in" style="transition-delay:0.08s">
+      <div class="step-num">02</div>
+      <h3 class="step-title">You Send the Inputs</h3>
+      <p class="step-desc">You share the project information packet — scope narrative, operator standard reference, any existing drawings or data sheets. A one-page summary is enough for most Package 1 scopes.</p>
+    </div>
+    <div class="step fade-in" style="transition-delay:0.16s">
+      <div class="step-num">03</div>
+      <h3 class="step-title">I Deliver</h3>
+      <p class="step-desc">You receive a clean, formatted Word document within the agreed turnaround. Every deliverable includes a cover sheet, revision log, and references to the applicable standard clauses — ready to submit.</p>
+    </div>
+    <div class="step fade-in" style="transition-delay:0.24s">
+      <div class="step-num">04</div>
+      <h3 class="step-title">You Review & Revise</h3>
+      <p class="step-desc">You mark up your comments and return them. I incorporate all revisions within 48 hours. Premium packages include a walkthrough call to ensure you understand every section before submitting to your client.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="contact" id="contact">
+  <div class="contact-inner" style="width:100%; padding: 0 60px;">
+    <div>
+      <h2 class="contact-heading fade-in">Let's work<br><em>together.</em></h2>
+      <p class="contact-sub fade-in">Tell me what you're working on. I respond to all enquiries within 24 hours.</p>
+      <div class="contact-links fade-in">
+        <a href="mailto:hamka.sulaiman@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉️</span>
+          <div>
+            <span class="contact-link-label">Email</span>
+            <span class="contact-link-value">hamka.sulaiman@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://wa.me/60147804528" class="contact-link" target="_blank">
+          <span class="contact-link-icon">📱</span>
+          <div>
+            <span class="contact-link-label">WhatsApp</span>
+            <span class="contact-link-value">+6014 780 4528</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com" class="contact-link" target="_blank">
+          <span class="contact-link-icon">💼</span>
+          <div>
+            <span class="contact-link-label">LinkedIn</span>
+            <span class="contact-link-value">linkedin.com/in/hamka-suleiman</span>
+          </div>
+        </a>
+        <a href="https://www.upwork.com" class="contact-link" target="_blank">
+          <span class="contact-link-icon">🔗</span>
+          <div>
+            <span class="contact-link-label">Upwork</span>
+            <span class="contact-link-value">View my Upwork profile →</span>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-right fade-in" style="transition-delay:0.15s">
+      <h3 class="form-title">Send a project brief</h3>
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="e.g. Ahmad bin Razali">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Company</label>
+        <input type="text" class="form-input" placeholder="EPC firm, consultancy, or operator">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Service Required</label>
+        <select class="form-select form-input">
+          <option value="">Select a package...</option>
+          <option>Package 1 — Spec Writer (USD 300)</option>
+          <option>Package 2 — Compliance Auditor (USD 650)</option>
+          <option>Package 3 — Full Package (USD 2,000)</option>
+          <option>Not sure — I need advice first</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Brief Description</label>
+        <textarea class="form-textarea form-input" placeholder="Describe your project scope, applicable standard, and timeline..."></textarea>
+      </div>
+      <button class="form-submit" onclick="alert('Thank you — Hamka will reply within 24 hours.')">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-left">© 2025 Hamka Hj Suleiman · Senior O&G Telecom Engineer · Kuala Lumpur, Malaysia</div>
+  <div class="footer-right">
+    <a href="#services">Services</a>
+    <a href="#track-record">Track Record</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:hamka.sulaiman@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth active state on nav
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.topbar-nav a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current
+        ? 'var(--gold)' : '';
+    });
+  });
+</script>
+</body>
+</html>
